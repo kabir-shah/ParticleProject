@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Particle
+comment0.text=\n\ Write\ a\ description\ of\ class\ Particle\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=Particle()
+comment2.params=
+comment2.target=double\ mass()
+comment3.params=d_v_x\ d_v_y
+comment3.target=void\ acc(double,\ double)
+comment4.params=
+comment4.target=void\ gravity()
+comment5.params=
+comment5.target=void\ viscosity()
+comment6.params=
+comment6.target=void\ go()
+comment7.params=
+comment7.target=void\ act()
+comment7.text=\n\ Act\ -\ do\ whatever\ the\ Particle\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+numComments=8
