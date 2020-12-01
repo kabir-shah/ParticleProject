@@ -37,13 +37,15 @@ public class ParticleWorld extends World
             MouseInfo info = Greenfoot.getMouseInfo();
             int x = info.getX();
             int y = info.getY();
-
-            switch (MenuItem.currentParticle) {
-                case "CarbonDioxide": {
-                    CarbonDioxide particle = new CarbonDioxide(x, y);
-                    particles.add(particle);
-                    addObject(particle, x, y);
-                    break;
+            
+            if (MenuItem.currentParticle != null) {
+                switch (MenuItem.currentParticle) {
+                    case "CarbonDioxide": {
+                        CarbonDioxide particle = new CarbonDioxide(x, y);
+                        particles.add(particle);
+                        addObject(particle, x, y);
+                        break;
+                    }
                 }
             }
         }

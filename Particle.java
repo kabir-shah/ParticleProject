@@ -18,19 +18,30 @@ public class Particle extends Actor
     private int size = 10;
     
     public Particle(double xInit, double yInit) {
-        //v_x = Greenfoot.getRandomNumber(10) - 5;
-        //v_y = Greenfoot.getRandomNumber(10) - 5;
         x = xInit;
         y = yInit;
-        scaleImage();
+        scaleImage("images/ball.png");
     }
     
-    public void scaleImage() {
+    public void scaleImage(String image) {
+        setImage(image);
         getImage().scale(size, size);
+    }
+    
+    public double getParticleSize() {
+        return size;
+    }
+    
+    public void setParticleSize(int newSize) {
+        size = newSize;
     }
     
     public double getMass() {
         return m;
+    }
+    
+    public void setMass(double newMass) {
+        m = newMass;
     }
     
     public double getPositionX() {
