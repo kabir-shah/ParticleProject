@@ -91,6 +91,7 @@ public class Particle extends Actor
         for (Reaction reaction : ParticleWorld.reactions) {
             boolean isReacting = true;
             boolean willBeConsumed = false;
+            double reactionEnergy = reaction.d_energy;
             double reactantEnergy = 0;
             List<Particle> consumed = new ArrayList<Particle>();
             
@@ -118,27 +119,31 @@ public class Particle extends Actor
                 }
             }
             
+            if (reactantEnergy < reactionEnergy) {
+                isReacting = false;
+            }
+            
             if (isReacting) {
-                double reactionEnergy = reaction.d_energy;
+                ParticleWorld world = (ParticleWorld) getWorld();
+                world.removeObjects(consumed);
                 
-                if (reactionEnergy < 0) {
+                if (willBeConsumed) {
+                    isConsumed = true;
+                }
+                    
+                if (reactionEnergy > 0) {
+                    // Endothermic
                     for (Particle reactantParticle : consumed) {
                         
                     }
                 } else {
-                    ParticleWorld world = (ParticleWorld) getWorld();
-                    world.removeObjects(consumed);
-                
-                    if (willBeConsumed) {
-                        isConsumed = true;
-                    }
-                    
+                    // Exothermic
                     double productEnergy = reactionEnergy / reaction.products.length;
                     
                     for (Product product : reaction.products) {
                         for (int i = 0; i < product.coefficient; i++) {
                             Particle productParticle = world.createParticle(product.particle, x, y);
-                            List<Particle> surroundings = productParticle.getNeighbours(100, true, Particle.class);
+                            List<Particle> surroundings = productParticle.getNeighbours(50, true, Particle.class);
                             int numSurroundings = surroundings.size();
                             
                             for (Particle surrounding : surroundings) {
