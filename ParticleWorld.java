@@ -13,7 +13,15 @@ public class ParticleWorld extends World
     public static final int width = 1000;
     public static final int height = 600;
     public static final int speed = 60;
-    private List<Particle> particles = new ArrayList<Particle>();
+    public static final double g = -9.8;
+    public static final Reaction[] reactions = {
+        new Reaction(
+            100,
+            new Reactant[]{new Reactant(1, Particle.class)},
+            new Product[]{new Product(1, "CarbonDioxide")}
+        )
+    };
+    private static List<Particle> particles = new ArrayList<Particle>();
 
     /**
      * Constructor for objects of class ParticleWorld.
@@ -32,21 +40,23 @@ public class ParticleWorld extends World
         }
     }
     
+    public void createParticle(String name, double x, double y) {
+        switch (name) {
+            case "CarbonDioxide": {
+                CarbonDioxide particle = new CarbonDioxide(x, y);
+                particles.add(particle);
+                addObject(particle, (int)x, (int)y);
+                break;
+            }
+        }
+    }
+    
     public void act() {
         if (Greenfoot.mouseDragged(this)) {
             MouseInfo info = Greenfoot.getMouseInfo();
-            int x = info.getX();
-            int y = info.getY();
             
             if (MenuItem.currentParticle != null) {
-                switch (MenuItem.currentParticle) {
-                    case "CarbonDioxide": {
-                        CarbonDioxide particle = new CarbonDioxide(x, y);
-                        particles.add(particle);
-                        addObject(particle, x, y);
-                        break;
-                    }
-                }
+                createParticle(MenuItem.currentParticle, info.getX(), info.getY());
             }
         }
     }
