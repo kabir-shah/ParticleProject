@@ -15,12 +15,12 @@ public class ParticleWorld extends World
     public static final int speed = 60;
     public static final double g = -9.8;
     public static final Reaction[] reactions = {
-            new Reaction(
-                100,
-                new Reactant[]{new Reactant(2, Particle.class)},
-                new Product[]{new Product(1, "CarbonDioxide")}
-            )
-        };
+        new Reaction(
+            100,
+            new Reactant[]{new Reactant(2, Particle.class)},
+            new Product[]{new Product(1, "CarbonDioxide")}
+        )
+    };
     private static List<Particle> particles = new ArrayList<Particle>();
 
     /**
@@ -31,7 +31,7 @@ public class ParticleWorld extends World
     {    
         super(width, height, 1); 
         Greenfoot.setSpeed(speed);
-        addObject(new Sensors(this),400 ,600);
+        addObject(new Sensors(this), 500, 500);
         addObject(new MenuItem(this, "CarbonDioxide", 90, 25, "1"), 0, 0);
         addObject(new MenuItem(this, "Glucose", 60, 50, "2"), 0, 0);
         addObject(new MenuItem(this, "Methane", 60, 75, "3"), 0, 0);
