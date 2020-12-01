@@ -24,7 +24,7 @@ public class ParticleWorld extends World
         super(width, height, 1); 
         Greenfoot.setSpeed(speed);
         addObject(new MenuItem(this, "CarbonDioxide", 90, 25, "1"), 0, 0);
-        
+        addObject(new MenuItem(this, "Glucose", 60, 50, "2"), 0, 0);
         for (int i = 0; i < 100; i++) {
             Particle particle = new Particle(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
             particles.add(particle);
@@ -42,6 +42,12 @@ public class ParticleWorld extends World
                 switch (MenuItem.currentParticle) {
                     case "CarbonDioxide": {
                         CarbonDioxide particle = new CarbonDioxide(x, y);
+                        particles.add(particle);
+                        addObject(particle, x, y);
+                        break;
+                    }
+                    case "Glucose": {
+                        Glucose particle = new Glucose(x, y);
                         particles.add(particle);
                         addObject(particle, x, y);
                         break;
