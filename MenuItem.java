@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MenuItem extends Actor
 {
-    public static String currentParticle = "Particle";
+    public static String currentParticle;
     private String particle;
     private String key;
     
