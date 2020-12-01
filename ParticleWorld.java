@@ -25,6 +25,8 @@ public class ParticleWorld extends World
         Greenfoot.setSpeed(speed);
         addObject(new MenuItem(this, "CarbonDioxide", 90, 25, "1"), 0, 0);
         addObject(new MenuItem(this, "Glucose", 60, 50, "2"), 0, 0);
+        addObject(new MenuItem(this, "Methane", 60, 75, "3"), 0, 0);
+        addObject(new MenuItem(this, "Phosphate", 71, 100, "4"), 0, 0);
         for (int i = 0; i < 100; i++) {
             Particle particle = new Particle(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
             particles.add(particle);
@@ -48,6 +50,18 @@ public class ParticleWorld extends World
                     }
                     case "Glucose": {
                         Glucose particle = new Glucose(x, y);
+                        particles.add(particle);
+                        addObject(particle, x, y);
+                        break;
+                    }
+                    case "Methane": {
+                        Methane particle = new Methane(x, y);
+                        particles.add(particle);
+                        addObject(particle, x, y);
+                        break;
+                    }
+                    case "Phosphate": {
+                        Phosphate particle = new Phosphate(x, y);
                         particles.add(particle);
                         addObject(particle, x, y);
                         break;
