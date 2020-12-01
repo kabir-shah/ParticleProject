@@ -1,5 +1,7 @@
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Write a description of class Particle here.
@@ -9,7 +11,6 @@ import java.util.List;
  */
 public class Particle extends Actor
 {
-    public static final double g = -9.8;
     private double m = 1;
     private double x = 0;
     private double y = 0;
@@ -66,7 +67,7 @@ public class Particle extends Actor
     }
     
     public void gravity() {
-        v_y += g / ParticleWorld.speed;
+        v_y += ParticleWorld.g / ParticleWorld.speed;
     }
     
     public void viscosity() {
@@ -79,31 +80,78 @@ public class Particle extends Actor
     }
     
     public void go() {
+        // Move with velocity
         x += v_x / ParticleWorld.speed;
         y -= v_y / ParticleWorld.speed;
         setLocation((int)x, (int)y);
         
-        // TODO: implement exclusion
-        Particle colliding = (Particle) getOneIntersectingObject(Particle.class);
+        // React
+        boolean isConsumed = false;
         
-        if (colliding != null) {
-            double c_m = colliding.getMass();
-            double c_v_x = colliding.getVelocityX();
-            double c_v_y = colliding.getVelocityY();
-            colliding.setVelocity(
-                2 * m * v_x / (m + c_m) + c_v_x * (c_m - m) / (m + c_m),
-                2 * m * v_y / (m + c_m) + c_v_y * (c_m - m) / (m + c_m)
-            );
-            v_x = v_x * (m - c_m) / (m + c_m) + 2 * c_m * c_v_x / (m + c_m);
-            v_y = v_y * (m - c_m) / (m + c_m) + 2 * c_m * c_v_y / (m + c_m);
+        for (Reaction reaction : ParticleWorld.reactions) {
+            boolean isReacting = true;
+            boolean willBeConsumed = false;
+            List<Particle> consumed = new ArrayList<Particle>();
+            
+            for (Reactant reactant : reaction.reactants) {
+                int numToReact = reactant.coefficient;
+                List<Particle> neighbors = getNeighbours(10, true, reactant.particle);
+                if (!isConsumed && this.getClass() == reactant.particle) {
+                    willBeConsumed = true;
+                    neighbors.add(this);
+                }
+                if (neighbors.size() < numToReact) {
+                    isReacting = false;
+                    willBeConsumed = false;
+                    break;
+                } else {
+                    for (Particle neighbor : neighbors) {
+                        consumed.add(neighbor);
+                    }
+                }
+            }
+            
+            if (isReacting) {
+                ParticleWorld world = (ParticleWorld) getWorld();
+                world.removeObjects(consumed);
+                
+                if (willBeConsumed) {
+                    isConsumed = true;
+                }
+                
+                for (Product product : reaction.products) {
+                    for (int i = 0; i < product.coefficient; i++) {
+                        world.createParticle(product.particle, x, y);
+                    }
+                }
+            }
         }
         
-        if (x <= 0 || x >= ParticleWorld.width - 1) {
-            v_x = -v_x;
-        }
+        if (!isConsumed) {
+            // Handle collision with particles
+            // TODO: implement exclusion
+            Particle colliding = (Particle) getOneIntersectingObject(Particle.class);
+        
+            if (colliding != null) {
+                double c_m = colliding.getMass();
+                double c_v_x = colliding.getVelocityX();
+                double c_v_y = colliding.getVelocityY();
+                colliding.setVelocity(
+                    2 * m * v_x / (m + c_m) + c_v_x * (c_m - m) / (m + c_m),
+                    2 * m * v_y / (m + c_m) + c_v_y * (c_m - m) / (m + c_m)
+                );
+                v_x = v_x * (m - c_m) / (m + c_m) + 2 * c_m * c_v_x / (m + c_m);
+                v_y = v_y * (m - c_m) / (m + c_m) + 2 * c_m * c_v_y / (m + c_m);
+            }
+        
+            // Handle collision with walls
+            if (x <= 0 || x >= ParticleWorld.width - 1) {
+                v_x = -v_x;
+            }
 
-        if (y <= 0 || y >= ParticleWorld.height - 1) {
-            v_y = -v_y;
+            if (y <= 0 || y >= ParticleWorld.height - 1) {
+                v_y = -v_y;
+            }
         }
     }
     

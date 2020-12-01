@@ -1,5 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import greenfoot.*; 
+import java.util.List;
 /**
  * Write a description of class Sensors here.
  * 
@@ -8,12 +8,23 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Sensors extends Actor
 {
+    private double sumKinetic = 0;
+    private double averageKinetic = 0;
+    private double temperature = 0;
     public Sensors(ParticleWorld world) {
-        world.showText("test", 500, 500);
+        getImage().clear();
     }
     public void act() {
-        if (isTouching(Particle.class)){
-            getWorld().showText("test2", 600, 550);
+        List<Particle> particles = getWorld().getObjects(Particle.class);
+        sumKinetic = 0;
+        averageKinetic = 0;
+        temperature = 0;
+        for (int i = 0; i < particles.size(); i++){
+            sumKinetic += 0.5 * (particles.get(i).getMass()) / 1000 * particles.get(i).getVelocityY() * particles.get(i).getVelocityY();
         }
+        averageKinetic = sumKinetic / particles.size();
+        temperature = 2 * averageKinetic / (3 * 8.3145);
+        getWorld().showText("The temperature is: " + temperature + " K", 500, 500);
+
     }
 }
