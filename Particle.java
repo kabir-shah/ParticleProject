@@ -22,6 +22,10 @@ public class Particle extends Actor
         //v_y = Greenfoot.getRandomNumber(10) - 5;
         x = xInit;
         y = yInit;
+        scaleImage();
+    }
+    
+    public void scaleImage() {
         getImage().scale(size, size);
     }
     

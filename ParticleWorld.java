@@ -23,7 +23,8 @@ public class ParticleWorld extends World
     {    
         super(width, height, 1); 
         Greenfoot.setSpeed(speed);
-        addObject(new MenuItem(this, Particle.class, 1), 0, 0);
+        addObject(new MenuItem(this, "Particle", 50, 25, "1"), 0, 0);
+        addObject(new MenuItem(this, "CarbonDioxide", 90, 50, "2"), 0, 0);
         
         for (int i = 0; i < 100; i++) {
             Particle particle = new Particle(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
@@ -34,14 +35,24 @@ public class ParticleWorld extends World
     
     public void act() {
         if (Greenfoot.mouseDragged(this)) {
-            try {
-                Particle particle = (Particle) MenuItem.currentParticle.newInstance();
-                particles.add(particle);
-            
-                MouseInfo info = Greenfoot.getMouseInfo();
-                addObject(particle, info.getX(), info.getY());
-            } catch (InstantiationException e) {
-            } catch (IllegalAccessException e) {}
+            MouseInfo info = Greenfoot.getMouseInfo();
+            int x = info.getX();
+            int y = info.getY();
+
+            switch (MenuItem.currentParticle) {
+                case "Particle": {
+                    Particle particle = new Particle(x, y);
+                    particles.add(particle);
+                    addObject(particle, x, y);
+                    break;
+                }
+                case "CarbonDioxide": {
+                    CarbonDioxide particle = new CarbonDioxide(x, y);
+                    particles.add(particle);
+                    addObject(particle, x, y);
+                    break;
+                }
+            }
         }
     }
 }

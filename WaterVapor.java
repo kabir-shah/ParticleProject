@@ -8,6 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class WaterVapor extends Particle
 {
+    public WaterVapor(double x, double y) {
+        super(x, y);
+    }
+    
     /**
      * Act - do whatever the watervapor wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

@@ -8,12 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MenuItem extends Actor
 {
-    public static Class currentParticle = Particle.class;
-    private Class particle;
+    public static String currentParticle = "Particle";
+    private String particle;
+    private String key;
     
-    public MenuItem(ParticleWorld world, Class particleClass, int level) {
-        particle = particleClass;
-        world.showText(particle.getName(), 50, level * 15);
+    public MenuItem(ParticleWorld world, String particleName, int x, int y, String k) {
+        particle = particleName;
+        key = k;
+        world.showText(particleName + " (" + key + ")", x + 10, y);
         getImage().clear();
     }
     
@@ -23,7 +25,7 @@ public class MenuItem extends Actor
      */
     public void act() 
     {
-        if (Greenfoot.mousePressed(this)) {
+        if (Greenfoot.isKeyDown(key)) {
             currentParticle = particle;
         }
     }    

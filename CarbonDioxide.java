@@ -8,12 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CarbonDioxide extends Particle
 {
-    /**
-     * Act - do whatever the CarbonDioxide wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
+    public CarbonDioxide(double x, double y) {
+        super(x, y);
+        setImage("images/carbondioxide.png");
+        scaleImage();
     }    
 }

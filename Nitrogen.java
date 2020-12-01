@@ -8,6 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Nitrogen extends Particle
 {
+    public Nitrogen(double x, double y) {
+        super(x, y);
+    }
+    
     /**
      * Act - do whatever the Nitrogen wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
