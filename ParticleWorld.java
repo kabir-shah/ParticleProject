@@ -15,12 +15,12 @@ public class ParticleWorld extends World
     public static final int speed = 60;
     public static final double g = -9.8;
     public static final Reaction[] reactions = {
-            new Reaction(
-                100,
-                new Reactant[]{new Reactant(2, Particle.class)},
-                new Product[]{new Product(1, "CarbonDioxide")}
-            )
-        };
+        new Reaction(
+            100,
+            new Reactant[]{new Reactant(2, Particle.class)},
+            new Product[]{new Product(1, "CarbonDioxide")}
+        )
+    };
     private static List<Particle> particles = new ArrayList<Particle>();
 
     /**

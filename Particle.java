@@ -146,11 +146,11 @@ public class Particle extends Actor
         
             // Handle collision with walls
             if (x <= 0 || x >= ParticleWorld.width - 1) {
-                v_x = -v_x;
+                v_x = -v_x * 0.9;
             }
 
             if (y <= 0 || y >= ParticleWorld.height - 1) {
-                v_y = -v_y;
+                v_y = -v_y * 0.9;
             }
         }
     }
