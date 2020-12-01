@@ -91,39 +91,68 @@ public class Particle extends Actor
         for (Reaction reaction : ParticleWorld.reactions) {
             boolean isReacting = true;
             boolean willBeConsumed = false;
+            double reactantEnergy = 0;
             List<Particle> consumed = new ArrayList<Particle>();
             
             for (Reactant reactant : reaction.reactants) {
                 int numToReact = reactant.coefficient;
                 List<Particle> neighbors = getNeighbours(10, true, reactant.particle);
+                
                 if (!isConsumed && this.getClass() == reactant.particle) {
                     willBeConsumed = true;
                     neighbors.add(this);
                 }
+                
                 if (neighbors.size() < numToReact) {
                     isReacting = false;
                     willBeConsumed = false;
                     break;
                 } else {
                     for (Particle neighbor : neighbors) {
+                        double neighborVelocityX = neighbor.getVelocityX();
+                        double neighborVelocityY = neighbor.getVelocityY();
+                        double neighborVelocity = Math.sqrt(neighborVelocityX * neighborVelocityX + neighborVelocityY * neighborVelocityY);
+                        reactantEnergy += 0.5 * neighbor.getMass() / 1000 * neighborVelocity * neighborVelocity;
                         consumed.add(neighbor);
                     }
                 }
             }
             
             if (isReacting) {
-                ParticleWorld world = (ParticleWorld) getWorld();
-                world.removeObjects(consumed);
+                double reactionEnergy = reaction.d_energy;
                 
-                if (willBeConsumed) {
-                    isConsumed = true;
-                }
-                
-                for (Product product : reaction.products) {
-                    for (int i = 0; i < product.coefficient; i++) {
-                        world.createParticle(product.particle, x, y);
+                if (reactionEnergy < 0) {
+                    for (Particle reactantParticle : consumed) {
+                        
                     }
-                }
+                } else {
+                    ParticleWorld world = (ParticleWorld) getWorld();
+                    world.removeObjects(consumed);
+                
+                    if (willBeConsumed) {
+                        isConsumed = true;
+                    }
+                    
+                    double productEnergy = reactionEnergy / reaction.products.length;
+                    
+                    for (Product product : reaction.products) {
+                        for (int i = 0; i < product.coefficient; i++) {
+                            Particle productParticle = world.createParticle(product.particle, x, y);
+                            List<Particle> surroundings = productParticle.getNeighbours(100, true, Particle.class);
+                            int numSurroundings = surroundings.size();
+                            
+                            for (Particle surrounding : surroundings) {
+                                double velocityMagnitude = Math.sqrt(2 * (productEnergy / product.coefficient / numSurroundings) / surrounding.getMass());
+                                double velocityAngle = Math.atan2(surrounding.getPositionY() - y, surrounding.getPositionX() - x);
+                                surrounding.setVelocity(velocityMagnitude * Math.cos(velocityAngle), velocityMagnitude * Math.sin(velocityAngle));
+                            }
+                            
+                            double velocityMagnitude = Math.sqrt(2 * reactantEnergy / productParticle.getMass());
+                            double velocityAngle = Math.random() * 2 * Math.PI;
+                            productParticle.setVelocity(velocityMagnitude * Math.cos(velocityAngle), velocityMagnitude * Math.sin(velocityAngle));
+                        }
+                    }
+                } 
             }
         }
         
@@ -146,11 +175,11 @@ public class Particle extends Actor
         
             // Handle collision with walls
             if (x <= 0 || x >= ParticleWorld.width - 1) {
-                v_x = -v_x * 0.9;
+                v_x = -v_x * 0.999;
             }
 
             if (y <= 0 || y >= ParticleWorld.height - 1) {
-                v_y = -v_y * 0.9;
+                v_y = -v_y * 0.999;
             }
         }
     }

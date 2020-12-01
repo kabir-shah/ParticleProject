@@ -16,9 +16,9 @@ public class ParticleWorld extends World
     public static final double g = -9.8;
     public static final Reaction[] reactions = {
         new Reaction(
-            100,
-            new Reactant[]{new Reactant(2, Particle.class)},
-            new Product[]{new Product(1, "CarbonDioxide")}
+            5000,
+            new Reactant[]{new Reactant(2, CarbonDioxide.class)},
+            new Product[]{new Product(1, "Methane")}
         )
     };
     private static List<Particle> particles = new ArrayList<Particle>();
@@ -42,31 +42,34 @@ public class ParticleWorld extends World
         }
     }
 
-    public void createParticle(String name, double x, double y) {
+    public Particle createParticle(String name, double x, double y) {
         switch (name) {
             case "CarbonDioxide": {
                 CarbonDioxide particle = new CarbonDioxide(x, y);
                 particles.add(particle);
                 addObject(particle, (int)x, (int)y);
-                break;
+                return particle;
             }
             case "Glucose": {
                 Glucose particle = new Glucose(x, y);
                 particles.add(particle);
                 addObject(particle, (int)x, (int)y);
-                break;
+                return particle;
             }
             case "Methane": {
                 Methane particle = new Methane(x, y);
                 particles.add(particle);
                 addObject(particle, (int)x, (int)y);
-                break;
+                return particle;
             }
             case "Phosphate": {
                 Phosphate particle = new Phosphate(x, y);
                 particles.add(particle);
                 addObject(particle, (int)x, (int)y);
-                break;
+                return particle;
+            }
+            default: {
+                return null;
             }
         }
     }
