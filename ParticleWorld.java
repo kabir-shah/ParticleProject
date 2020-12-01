@@ -23,6 +23,7 @@ public class ParticleWorld extends World
     {    
         super(width, height, 1); 
         Greenfoot.setSpeed(speed);
+        addObject(new Sensors(this),400 ,600);
         addObject(new MenuItem(this, "CarbonDioxide", 90, 25, "1"), 0, 0);
         addObject(new MenuItem(this, "Glucose", 60, 50, "2"), 0, 0);
         addObject(new MenuItem(this, "Methane", 60, 75, "3"), 0, 0);
