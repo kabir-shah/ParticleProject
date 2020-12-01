@@ -95,7 +95,7 @@ public class Particle extends Actor
             
             for (Reactant reactant : reaction.reactants) {
                 int numToReact = reactant.coefficient;
-                List<Particle> neighbors = getNeighbours(5, true, reactant.particle);
+                List<Particle> neighbors = getNeighbours(10, true, reactant.particle);
                 if (!isConsumed && this.getClass() == reactant.particle) {
                     willBeConsumed = true;
                     neighbors.add(this);

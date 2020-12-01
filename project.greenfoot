@@ -1,8 +1,14 @@
 #Greenfoot project file
+class.Glucose.image=glucose.png
+class.Methane.image=methane.png
 class.Particle.image=ball.png
+<<<<<<< HEAD
 class.Product.image=ball.png
 class.Reactant.image=ball.png
 class.Reaction.image=ball.png
+=======
+class.Phosphate.image=phosphate.png
+>>>>>>> 3f2ed3d396a2c0a300c0753da980b1f742b2c0db
 dependency1.from=ParticleWorld
 dependency1.to=Reaction
 dependency1.type=UsesDependency
@@ -10,6 +16,7 @@ dependency2.from=ParticleWorld
 dependency2.to=Particle
 dependency2.type=UsesDependency
 dependency3.from=ParticleWorld
+<<<<<<< HEAD
 dependency3.to=MenuItem
 dependency3.type=UsesDependency
 dependency4.from=ParticleWorld
@@ -17,6 +24,15 @@ dependency4.to=CarbonDioxide
 dependency4.type=UsesDependency
 dependency5.from=Particle
 dependency5.to=Reaction
+=======
+dependency3.to=CarbonDioxide
+dependency3.type=UsesDependency
+dependency4.from=ParticleWorld
+dependency4.to=Glucose
+dependency4.type=UsesDependency
+dependency5.from=ParticleWorld
+dependency5.to=Methane
+>>>>>>> 3f2ed3d396a2c0a300c0753da980b1f742b2c0db
 dependency5.type=UsesDependency
 dependency6.from=Particle
 dependency6.to=ParticleWorld
@@ -28,7 +44,11 @@ editor.fx.0.height=722
 editor.fx.0.width=800
 editor.fx.0.x=320
 editor.fx.0.y=75
+<<<<<<< HEAD
 height=877
+=======
+height=1166
+>>>>>>> 3f2ed3d396a2c0a300c0753da980b1f742b2c0db
 package.numDependencies=7
 package.numTargets=10
 project.charset=UTF-8
@@ -53,6 +73,7 @@ target1.width=80
 target1.x=0
 target1.y=0
 target10.height=50
+<<<<<<< HEAD
 target10.name=Reactant
 target10.showInterface=false
 target10.type=ClassTarget
@@ -82,6 +103,37 @@ target4.x=0
 target4.y=0
 target5.height=50
 target5.name=MenuItem
+=======
+target10.name=Nitrogen
+target10.showInterface=false
+target10.type=ClassTarget
+target10.width=80
+target10.x=0
+target10.y=0
+target2.height=50
+target2.name=Methane
+target2.showInterface=false
+target2.type=ClassTarget
+target2.width=80
+target2.x=0
+target2.y=0
+target3.height=50
+target3.name=WaterVapor
+target3.showInterface=false
+target3.type=ClassTarget
+target3.width=90
+target3.x=0
+target3.y=0
+target4.height=50
+target4.name=ParticleWorld
+target4.showInterface=false
+target4.type=ClassTarget
+target4.width=110
+target4.x=0
+target4.y=0
+target5.height=50
+target5.name=Phosphate
+>>>>>>> 3f2ed3d396a2c0a300c0753da980b1f742b2c0db
 target5.showInterface=false
 target5.type=ClassTarget
 target5.width=80
@@ -91,32 +143,48 @@ target6.height=50
 target6.name=CarbonDioxide
 target6.showInterface=false
 target6.type=ClassTarget
+<<<<<<< HEAD
 target6.width=110
 target6.x=0
 target6.y=0
 target7.height=50
 target7.name=Nitrogen
+=======
+target6.width=100
+target6.x=0
+target6.y=0
+target7.height=50
+target7.name=MenuItem
+>>>>>>> 3f2ed3d396a2c0a300c0753da980b1f742b2c0db
 target7.showInterface=false
 target7.type=ClassTarget
 target7.width=80
 target7.x=0
 target7.y=0
 target8.height=50
+<<<<<<< HEAD
 target8.name=Helium
+=======
+target8.name=Glucose
+>>>>>>> 3f2ed3d396a2c0a300c0753da980b1f742b2c0db
 target8.showInterface=false
 target8.type=ClassTarget
 target8.width=80
 target8.x=0
 target8.y=0
 target9.height=50
+<<<<<<< HEAD
 target9.name=Reaction
+=======
+target9.name=Helium
+>>>>>>> 3f2ed3d396a2c0a300c0753da980b1f742b2c0db
 target9.showInterface=false
 target9.type=ClassTarget
 target9.width=80
 target9.x=0
 target9.y=0
 version=3.0.0
-width=1440
+width=2766
 world.lastInstantiated=ParticleWorld
 xPosition=0
-yPosition=23
+yPosition=0
