@@ -12,7 +12,7 @@ public class ParticleWorld extends World
 {
     public static final int width = 1000;
     public static final int height = 600;
-    public static final int speed = 50;
+    public static final int speed = 60;
     private List<Particle> particles = new ArrayList<Particle>();
 
     /**
@@ -23,11 +23,25 @@ public class ParticleWorld extends World
     {    
         super(width, height, 1); 
         Greenfoot.setSpeed(speed);
+        addObject(new MenuItem(this, Particle.class, 1), 0, 0);
         
         for (int i = 0; i < 100; i++) {
-            Particle particle = new Particle();
+            Particle particle = new Particle(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
             particles.add(particle);
-            addObject(particle, Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
+            addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
+        }
+    }
+    
+    public void act() {
+        if (Greenfoot.mouseDragged(this)) {
+            try {
+                Particle particle = (Particle) MenuItem.currentParticle.newInstance();
+                particles.add(particle);
+            
+                MouseInfo info = Greenfoot.getMouseInfo();
+                addObject(particle, info.getX(), info.getY());
+            } catch (InstantiationException e) {
+            } catch (IllegalAccessException e) {}
         }
     }
 }

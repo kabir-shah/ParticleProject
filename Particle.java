@@ -9,28 +9,49 @@ import java.util.List;
  */
 public class Particle extends Actor
 {
-    public static final double g_x = 0;
-    public static final double g_y = -9.8;
+    public static final double g = -9.8;
     private double m = 1;
+    private double x = 0;
+    private double y = 0;
     private double v_x = 0;
     private double v_y = 0;
+    private int size = 10;
     
-    public Particle() {
-        v_x = Greenfoot.getRandomNumber(10) - 5;
-        v_y = Greenfoot.getRandomNumber(10) - 5;
+    public Particle(double xInit, double yInit) {
+        //v_x = Greenfoot.getRandomNumber(10) - 5;
+        //v_y = Greenfoot.getRandomNumber(10) - 5;
+        x = xInit;
+        y = yInit;
+        getImage().scale(size, size);
     }
     
-    public double mass() {
+    public double getMass() {
         return m;
     }
     
-    public void acc(double d_v_x, double d_v_y) {
-        v_x += d_v_x;
-        v_y += d_v_y;
+    public double getPositionX() {
+        return x;
+    }
+    
+    public double getPositionY() {
+        return y;
+    }
+    
+    public double getVelocityX() {
+        return v_x;
+    }
+    
+    public double getVelocityY() {
+        return v_y;
+    }
+    
+    public void setVelocity(double v_x_new, double v_y_new) {
+        v_x = v_x_new;
+        v_y = v_y_new;
     }
     
     public void gravity() {
-        acc(g_x, g_y);
+        v_y += g / ParticleWorld.speed;
     }
     
     public void viscosity() {
@@ -38,32 +59,35 @@ public class Particle extends Actor
         List<Particle> neighbors = getNeighbours(5, true, Particle.class);
         
         for (Particle neighbor : neighbors) {
-            neighbor.acc(-10 / (neighbor.getX() - getX()), -10 / (neighbor.getY() - getY()));
+            //neighbor.acc(-10 / (neighbor.getX() - getX()), -10 / (neighbor.getY() - getY()));
         }
     }
     
     public void go() {
-        int x = getX();
-        int y = getY();
-        
-        setLocation(x = (int)(x + v_x / ParticleWorld.speed), y);
-        setLocation(x, y = (int)(y - v_y / ParticleWorld.speed));
+        x += v_x / ParticleWorld.speed;
+        y -= v_y / ParticleWorld.speed;
+        setLocation((int)x, (int)y);
         
         // TODO: implement exclusion
         Particle colliding = (Particle) getOneIntersectingObject(Particle.class);
         
         if (colliding != null) {
-            double c_m = colliding.mass();
-            colliding.acc(2 * m * v_x / (m + c_m), 2 * m * v_y / (m + c_m));
-            v_x = v_x * (m - c_m) / (m + c_m);
-            v_y = v_y * (m - c_m) / (m + c_m);
+            double c_m = colliding.getMass();
+            double c_v_x = colliding.getVelocityX();
+            double c_v_y = colliding.getVelocityY();
+            colliding.setVelocity(
+                2 * m * v_x / (m + c_m) + c_v_x * (c_m - m) / (m + c_m),
+                2 * m * v_y / (m + c_m) + c_v_y * (c_m - m) / (m + c_m)
+            );
+            v_x = v_x * (m - c_m) / (m + c_m) + 2 * c_m * c_v_x / (m + c_m);
+            v_y = v_y * (m - c_m) / (m + c_m) + 2 * c_m * c_v_y / (m + c_m);
         }
         
-        if (x == 0 || x == ParticleWorld.width - 1) {
+        if (x <= 0 || x >= ParticleWorld.width - 1) {
             v_x = -v_x;
         }
-        
-        if (y == 0 || y == ParticleWorld.height - 1) {
+
+        if (y <= 0 || y >= ParticleWorld.height - 1) {
             v_y = -v_y;
         }
     }
