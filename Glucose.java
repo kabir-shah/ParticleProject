@@ -11,7 +11,7 @@ public class Glucose extends Particle
     public Glucose(double x, double y) {
         super(x, y);
         setParticleSize(40);
-        setMass(180.156);
+        setMass(180.156 / 1000);
         scaleImage("images/glucose.png");
     }   
 }

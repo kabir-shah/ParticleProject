@@ -11,7 +11,7 @@ public class Phosphate extends Particle
     public Phosphate(double x, double y) {
         super(x, y);
         setParticleSize(30);
-        setMass(94.97);
+        setMass(94.97 / 1000);
         scaleImage("images/phosphate.png");
     }    
 }

@@ -26,7 +26,7 @@ public class Sensors extends Actor
         temperature = 0;
         for (int i = 0; i < particles.size(); i++){
             totalVelocity = Math.sqrt(particles.get(i).getVelocityY() * particles.get(i).getVelocityY() + particles.get(i).getVelocityX() * particles.get(i).getVelocityX());
-            sumKinetic += 0.5 * (particles.get(i).getMass()) / 1000 * totalVelocity * totalVelocity;
+            sumKinetic += 0.5 * (particles.get(i).getMass()) * totalVelocity * totalVelocity;
         }
         averageKinetic = sumKinetic / particles.size();
         temperature = 2 * averageKinetic / (3 * 8.3145);
