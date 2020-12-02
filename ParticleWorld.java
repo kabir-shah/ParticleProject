@@ -37,7 +37,7 @@ public class ParticleWorld extends World
         addObject(new MenuItem(this, "Methane", 60, 75, "3"), 0, 0);
         addObject(new MenuItem(this, "Phosphate", 71, 100, "4"), 0, 0);
         for (int i = 0; i < 100; i++) {
-            Particle particle = new Particle(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
+            Particle particle = new Methane(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
             particles.add(particle);
             addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
         }

@@ -115,7 +115,7 @@ public class Particle extends Actor
                         double neighborVelocityX = neighbor.getVelocityX();
                         double neighborVelocityY = neighbor.getVelocityY();
                         double neighborVelocity = Math.sqrt(neighborVelocityX * neighborVelocityX + neighborVelocityY * neighborVelocityY);
-                        reactantEnergy += 0.5 * neighbor.getMass() / 1000 * neighborVelocity * neighborVelocity;
+                        reactantEnergy += 0.5 * neighbor.getMass() * neighborVelocity * neighborVelocity;
                         consumed.add(neighbor);
                     }
                 }
