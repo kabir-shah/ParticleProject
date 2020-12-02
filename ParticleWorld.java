@@ -19,6 +19,11 @@ public class ParticleWorld extends World
             -100,
             new Reactant[]{new Reactant(2, CarbonDioxide.class)},
             new Product[]{new Product(1, "Methane")}
+        ),
+        new Reaction(
+            -100,
+            new Reactant[]{new Reactant(1, Methane.class),new Reactant(1, Oxygen.class) },
+            new Product[]{new Product(1, "WaterVapor"), new Product(1, "CarbonDioxide")}
         )
     };
     private static List<Particle> particles = new ArrayList<Particle>();
