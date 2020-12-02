@@ -11,7 +11,7 @@ public class CarbonDioxide extends Particle
     public CarbonDioxide(double x, double y) {
         super(x, y);
         setParticleSize(20);
-        setMass(44.01);
+        setMass(44.01 / 1000);
         scaleImage("images/carbondioxide.png");
     }    
 }

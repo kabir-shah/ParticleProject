@@ -16,7 +16,7 @@ public class ParticleWorld extends World
     public static final double g = -9.8;
     public static final Reaction[] reactions = {
         new Reaction(
-            -1000,
+            -100,
             new Reactant[]{new Reactant(2, CarbonDioxide.class)},
             new Product[]{new Product(1, "Methane")}
         )

@@ -85,7 +85,7 @@ public class Particle extends Actor
         y -= v_y / ParticleWorld.speed;
         setLocation((int)x, (int)y);
         
-        // React
+        // React        
         boolean isConsumed = false;
         
         for (Reaction reaction : ParticleWorld.reactions) {
@@ -99,7 +99,7 @@ public class Particle extends Actor
                 int numToReact = reactant.coefficient;
                 List<Particle> neighbors = getNeighbours(10, true, reactant.particle);
                 
-                if (!isConsumed && this.getClass() == reactant.particle) {
+                if (!isConsumed && !willBeConsumed && this.getClass() == reactant.particle) {
                     willBeConsumed = true;
                     neighbors.add(this);
                 }
@@ -109,6 +109,8 @@ public class Particle extends Actor
                     willBeConsumed = false;
                     break;
                 } else {
+                    neighbors = neighbors.subList(0, numToReact);
+                    
                     for (Particle neighbor : neighbors) {
                         double neighborVelocityX = neighbor.getVelocityX();
                         double neighborVelocityY = neighbor.getVelocityY();
@@ -138,7 +140,7 @@ public class Particle extends Actor
                     }
                 } else {
                     // Exothermic
-                    double productEnergy = reactionEnergy / reaction.products.length;
+                    double productEnergy = -reactionEnergy / reaction.products.length;
                     
                     for (Product product : reaction.products) {
                         for (int i = 0; i < product.coefficient; i++) {
@@ -149,7 +151,7 @@ public class Particle extends Actor
                             for (Particle surrounding : surroundings) {
                                 double velocityMagnitude = Math.sqrt(2 * (productEnergy / product.coefficient / numSurroundings) / surrounding.getMass());
                                 double velocityAngle = Math.atan2(surrounding.getPositionY() - y, surrounding.getPositionX() - x);
-                                surrounding.setVelocity(velocityMagnitude * Math.cos(velocityAngle), velocityMagnitude * Math.sin(velocityAngle));
+                                surrounding.setVelocity(surrounding.getVelocityX() + velocityMagnitude * Math.cos(velocityAngle), surrounding.getVelocityY() + velocityMagnitude * Math.sin(velocityAngle));
                             }
                             
                             double velocityMagnitude = Math.sqrt(2 * reactantEnergy / productParticle.getMass());

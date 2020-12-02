@@ -11,7 +11,7 @@ public class Methane extends Particle
     public Methane(double x, double y) {
         super(x, y);
         setParticleSize(25);
-        setMass(16.04);
+        setMass(16.04 / 1000);
         scaleImage("images/methane.png");
     }   
 }
