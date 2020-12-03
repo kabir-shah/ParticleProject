@@ -1,6 +1,7 @@
 #BlueJ class context
 comment0.target=Product
-comment0.text=\n\ Write\ a\ description\ of\ class\ ReactionItem\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Represent\ a\ product\ of\ a\ reaction.\n
 comment1.params=c\ p
 comment1.target=Product(int,\ java.lang.String)
+comment1.text=\n\ Create\ a\ new\ product.\n
 numComments=2
