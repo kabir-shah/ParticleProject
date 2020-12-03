@@ -15,4 +15,7 @@ public class Product extends Actor
         coefficient = c;
         particle = p;
     }
+    public String toString() {
+        return "particle";
+    }
 }
