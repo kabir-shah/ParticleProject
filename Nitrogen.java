@@ -10,14 +10,9 @@ public class Nitrogen extends Particle
 {
     public Nitrogen(double x, double y) {
         super(x, y);
+        setParticleSize(20);
+        setMass(28 / 1000);
+        scaleImage("images/Nitrogen.png");
     }
-    
-    /**
-     * Act - do whatever the Nitrogen wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
+       
 }
