@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=MenuItem
-comment0.text=\n\ Write\ a\ description\ of\ class\ MenuItem\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Handle\ menu\ item\ UI\ with\ a\ currently\ selected\ item.\n\ \n\ @author\ {Kabir\ Shah}\n
 comment1.params=world\ particleName\ x\ y\ k
 comment1.target=MenuItem(ParticleWorld,\ java.lang.String,\ int,\ int,\ java.lang.String)
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\n\ Act\ -\ do\ whatever\ the\ MenuItem\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment2.text=\n\ Handle\ events\ for\ this\ menu\ item.\n
 numComments=3

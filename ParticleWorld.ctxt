@@ -1,11 +1,13 @@
 #BlueJ class context
 comment0.target=ParticleWorld
-comment0.text=\n\ Write\ a\ description\ of\ class\ ParticleWorld\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Hold\ the\ world\ of\ particles\ and\ handle\ their\ general\ behavior.\n
 comment1.params=
 comment1.target=ParticleWorld()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ ParticleWorld.\n\n
+comment1.text=\n\ Create\ a\ world.\n
 comment2.params=name\ x\ y
 comment2.target=Particle\ createParticle(java.lang.String,\ double,\ double)
+comment2.text=\n\ Create\ a\ particle\ given\ a\ string\ name\ and\ initial\ position.\n
 comment3.params=
 comment3.target=void\ act()
+comment3.text=\n\ Handle\ global\ events\ on\ the\ world.\n
 numComments=4

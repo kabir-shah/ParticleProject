@@ -3,48 +3,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Write a description of class ParticleWorld here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Hold the world of particles and handle their general behavior.
  */
 public class ParticleWorld extends World
 {
     public static final int width = 1000;
     public static final int height = 600;
-    public static final int speed = 60;
-    public static final double g = -9.8;
+    public static final int speed = 60; // Ticks per second.
+    public static final double g = -9.8; // Gravitational constant (m/s/s)
     public static final Reaction[] reactions = {
         new Reaction(
             -100,
             new Reactant[]{new Reactant(2, CarbonDioxide.class)},
             new Product[]{new Product(1, "Methane")}
         ),
-        new Reaction(
+        new Reaction( // O + 2H -> H2O
             -100,
             new Reactant[]{new Reactant(1, Oxygen.class), new Reactant(2, Hydrogen.class)},
             new Product[]{new Product(1, "WaterVapor")}
         ),
-        new Reaction(
+        new Reaction( // 2O + C -> CO2
             -100,
             new Reactant[]{new Reactant(2, Oxygen.class), new Reactant(1, Carbon.class)},
             new Product[]{new Product(1, "CarbonDioxide")}
         )
     };
-    private static List<Particle> particles = new ArrayList<Particle>();
+    private static List<Particle> particles = new ArrayList<Particle>(); // List of all particles in world.
 
     /**
-     * Constructor for objects of class ParticleWorld.
-     *
+     * Create a world.
      */
     public ParticleWorld()
     {
         super(width, height, 1);
-        Greenfoot.setSpeed(speed);
+        Greenfoot.setSpeed(speed); // Set the speed according to the attribute.
+        
+        // Create the sensors and menu items.
         addObject(new Sensors(this), 500, 550);
         addObject(new MenuItem(this, "CarbonDioxide", 90, 25, "1"), 0, 0);
         addObject(new MenuItem(this, "Glucose", 60, 50, "2"), 0, 0);
         addObject(new MenuItem(this, "Phosphate", 71, 100, "4"), 0, 0);
+        
+        // Loop and create particles of all types.
         for (int i = 0; i < 100; i++) {
             if (i < 18) {
                 Particle particle = new Oxygen(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
@@ -94,6 +94,9 @@ public class ParticleWorld extends World
         }
     }
 
+    /**
+     * Create a particle given a string name and initial position.
+     */
     public Particle createParticle(String name, double x, double y) {
         switch (name) {
             case "CarbonDioxide": {
@@ -162,10 +165,17 @@ public class ParticleWorld extends World
         }
     }
 
+    /**
+     * Handle global events on the world.
+     */
     public void act() {
+        // Check if the mouse was dragged.
         if (Greenfoot.mouseDragged(this)) {
+            // Get mouse coordinates.
             MouseInfo info = Greenfoot.getMouseInfo();
-
+            
+            // If there is a currently selected particle in the menu,
+            // create a particle at the mouse location of that class.
             if (MenuItem.currentParticle != null) {
                 createParticle(MenuItem.currentParticle, info.getX(), info.getY());
             }
