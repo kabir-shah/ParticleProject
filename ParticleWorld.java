@@ -39,12 +39,48 @@ public class ParticleWorld extends World
         addObject(new Sensors(this), 500, 550);
         addObject(new MenuItem(this, "CarbonDioxide", 90, 25, "1"), 0, 0);
         addObject(new MenuItem(this, "Glucose", 60, 50, "2"), 0, 0);
-        addObject(new MenuItem(this, "Methane", 60, 75, "3"), 0, 0);
         addObject(new MenuItem(this, "Phosphate", 71, 100, "4"), 0, 0);
         for (int i = 0; i < 100; i++) {
-            Particle particle = new Methane(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
-            particles.add(particle);
-            addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
+            if (i < 18) {
+                Particle particle = new Oxygen(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
+                particles.add(particle);
+                addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
+            }
+            else if (i < 50) {
+                Particle particle = new Hydrogen(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
+                particles.add(particle);
+                addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
+            }
+            else if (i < 62) {
+                Particle particle = new CarbonDioxide(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
+                particles.add(particle);
+                addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
+            }
+            else if (i < 72) {
+                Particle particle = new WaterVapor(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
+                particles.add(particle);
+                addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
+            }
+            else if (i < 82) {
+                Particle particle = new Phosphate(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
+                particles.add(particle);
+                addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
+            }
+            else if (i < 87) {
+                Particle particle = new Helium(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
+                particles.add(particle);
+                addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
+            }
+            else if (i < 92) {
+                Particle particle = new Glucose(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
+                particles.add(particle);
+                addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
+            }
+            else {
+                Particle particle = new Methane(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
+                particles.add(particle);
+                addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
+            }
         }
     }
 

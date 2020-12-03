@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Particle
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Particle\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Particle\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=xInit\ yInit
 comment1.target=Particle(double,\ double)
 comment10.params=
@@ -15,7 +15,7 @@ comment14.params=
 comment14.target=void\ go()
 comment15.params=
 comment15.target=void\ act()
-comment15.text=\r\n\ Act\ -\ do\ whatever\ the\ Particle\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment15.text=\n\ Act\ -\ do\ whatever\ the\ Particle\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment2.params=image
 comment2.target=void\ scaleImage(java.lang.String)
 comment3.params=

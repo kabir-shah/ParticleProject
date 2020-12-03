@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Hydrogen
+comment0.text=\n\ Write\ a\ description\ of\ class\ hydrogen\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=x\ y
+comment1.target=Hydrogen(double,\ double)
+numComments=2
