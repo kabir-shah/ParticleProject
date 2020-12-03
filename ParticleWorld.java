@@ -22,8 +22,13 @@ public class ParticleWorld extends World
         ),
         new Reaction(
             -100,
-            new Reactant[]{new Reactant(1, Methane.class),new Reactant(1, Oxygen.class) },
-            new Product[]{new Product(1, "WaterVapor"), new Product(1, "CarbonDioxide")}
+            new Reactant[]{new Reactant(1, Oxygen.class), new Reactant(2, Hydrogen.class)},
+            new Product[]{new Product(1, "WaterVapor")}
+        ),
+        new Reaction(
+            -100,
+            new Reactant[]{new Reactant(2, Oxygen.class), new Reactant(1, Carbon.class)},
+            new Product[]{new Product(1, "CarbonDioxide")}
         )
     };
     private static List<Particle> particles = new ArrayList<Particle>();
@@ -56,22 +61,27 @@ public class ParticleWorld extends World
                 particles.add(particle);
                 addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
             }
-            else if (i < 72) {
+            else if (i < 67) {
                 Particle particle = new WaterVapor(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
                 particles.add(particle);
                 addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
             }
-            else if (i < 82) {
+            else if (i < 75) {
                 Particle particle = new Phosphate(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
                 particles.add(particle);
                 addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
             }
-            else if (i < 87) {
+            else if (i < 82) {
                 Particle particle = new Helium(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
                 particles.add(particle);
                 addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
             }
-            else if (i < 92) {
+            else if (i < 85) {
+                Particle particle = new Carbon(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
+                particles.add(particle);
+                addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
+            }
+            else if (i < 95) {
                 Particle particle = new Glucose(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
                 particles.add(particle);
                 addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
@@ -136,6 +146,12 @@ public class ParticleWorld extends World
             }
             case "Nitrogen": {
                 Nitrogen particle = new Nitrogen(x, y);
+                particles.add(particle);
+                addObject(particle, (int)x, (int)y);
+                return particle;
+            }
+            case "Carbon": {
+                Carbon particle = new Carbon(x, y);
                 particles.add(particle);
                 addObject(particle, (int)x, (int)y);
                 return particle;
