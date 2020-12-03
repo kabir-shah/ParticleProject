@@ -116,6 +116,30 @@ public class ParticleWorld extends World
                 addObject(particle, (int)x, (int)y);
                 return particle;
             }
+            case "WaterVapor": {
+                WaterVapor particle = new WaterVapor(x, y);
+                particles.add(particle);
+                addObject(particle, (int)x, (int)y);
+                return particle;
+            }
+            case "Helium": {
+                Helium particle = new Helium(x, y);
+                particles.add(particle);
+                addObject(particle, (int)x, (int)y);
+                return particle;
+            }
+            case "Hydrogen": {
+                Hydrogen particle = new Hydrogen(x, y);
+                particles.add(particle);
+                addObject(particle, (int)x, (int)y);
+                return particle;
+            }
+            case "Nitrogen": {
+                Nitrogen particle = new Nitrogen(x, y);
+                particles.add(particle);
+                addObject(particle, (int)x, (int)y);
+                return particle;
+            }
             default: {
                 return null;
             }
