@@ -4,8 +4,8 @@ import java.util.List;
 
 /**
  * Write a description of class ParticleWorld here.
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
 public class ParticleWorld extends World
@@ -35,11 +35,11 @@ public class ParticleWorld extends World
 
     /**
      * Constructor for objects of class ParticleWorld.
-     * 
+     *
      */
     public ParticleWorld()
-    {    
-        super(width, height, 1); 
+    {
+        super(width, height, 1);
         Greenfoot.setSpeed(speed);
         addObject(new Sensors(this), 500, 550);
         addObject(new MenuItem(this, "CarbonDioxide", 90, 25, "1"), 0, 0);

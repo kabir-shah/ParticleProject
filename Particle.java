@@ -90,7 +90,6 @@ public class Particle extends Actor
         
         for (Reaction reaction : ParticleWorld.reactions) {
             boolean isReacting = true;
-            boolean willBeConsumed = false;
             double reactionEnergy = reaction.d_energy;
             double reactantEnergy = 0;
             List<Particle> consumed = new ArrayList<Particle>();
@@ -99,14 +98,14 @@ public class Particle extends Actor
                 int numToReact = reactant.coefficient;
                 List<Particle> neighbors = getNeighbours(10, true, reactant.particle);
                 
-                if (!isConsumed && !willBeConsumed && this.getClass() == reactant.particle) {
-                    willBeConsumed = true;
+                if (!isConsumed && this.getClass() == reactant.particle) {
+                    isConsumed = true;
                     neighbors.add(this);
                 }
                 
                 if (neighbors.size() < numToReact) {
                     isReacting = false;
-                    willBeConsumed = false;
+                    isConsumed = false;
                     break;
                 } else {
                     neighbors = neighbors.subList(0, numToReact);
@@ -128,10 +127,6 @@ public class Particle extends Actor
             if (isReacting) {
                 ParticleWorld world = (ParticleWorld) getWorld();
                 world.removeObjects(consumed);
-                
-                if (willBeConsumed) {
-                    isConsumed = true;
-                }
                     
                 if (reactionEnergy > 0) {
                     // Endothermic
@@ -151,7 +146,7 @@ public class Particle extends Actor
                             for (Particle surrounding : surroundings) {
                                 double velocityMagnitude = Math.sqrt(2 * (productEnergy / product.coefficient / numSurroundings) / surrounding.getMass());
                                 double velocityAngle = Math.atan2(surrounding.getPositionY() - y, surrounding.getPositionX() - x);
-                                surrounding.setVelocity(surrounding.getVelocityX() + velocityMagnitude * Math.cos(velocityAngle), surrounding.getVelocityY() + velocityMagnitude * Math.sin(velocityAngle));
+                                surrounding.setVelocity(velocityMagnitude * Math.cos(velocityAngle), velocityMagnitude * Math.sin(velocityAngle));
                             }
                             
                             double velocityMagnitude = Math.sqrt(2 * reactantEnergy / productParticle.getMass());
@@ -159,7 +154,11 @@ public class Particle extends Actor
                             productParticle.setVelocity(velocityMagnitude * Math.cos(velocityAngle), velocityMagnitude * Math.sin(velocityAngle));
                         }
                     }
-                } 
+                }
+                
+                if (isConsumed) {
+                    break;
+                }
             }
         }
         
