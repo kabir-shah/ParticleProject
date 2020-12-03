@@ -116,6 +116,12 @@ public class ParticleWorld extends World
                 addObject(particle, (int)x, (int)y);
                 return particle;
             }
+            case "WaterVapor": {
+                WaterVapor particle = new WaterVapor(x, y);
+                particles.add(particle);
+                addObject(particle, (int)x, (int)y);
+                return particle;
+            }
             default: {
                 return null;
             }
