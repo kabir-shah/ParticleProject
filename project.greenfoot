@@ -62,6 +62,9 @@ dependency20.type=UsesDependency
 dependency21.from=Sensors
 dependency21.to=ParticleWorld
 dependency21.type=UsesDependency
+dependency22.from=Sensors
+dependency22.to=Particle
+dependency22.type=UsesDependency
 dependency3.from=ParticleWorld
 dependency3.to=Product
 dependency3.type=UsesDependency
@@ -83,6 +86,14 @@ dependency8.type=UsesDependency
 dependency9.from=Particle
 dependency9.to=Reactant
 dependency9.type=UsesDependency
+<<<<<<< HEAD
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
+height=1166
+package.numDependencies=22
+=======
 editor.fx.0.height=722
 editor.fx.0.width=793
 <<<<<<< HEAD
@@ -90,6 +101,7 @@ editor.fx.0.x=370
 editor.fx.0.y=36
 height=877
 package.numDependencies=21
+>>>>>>> 80c20523b8e171d438d1dd293ef50e30e2c1ec19
 package.numTargets=16
 =======
 editor.fx.0.x=694
