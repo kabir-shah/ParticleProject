@@ -17,4 +17,7 @@ public class Reaction extends Actor
         reactants = r;
         products = p;
     }
+    public String toString() {
+        return "The reactants: " + reactants + ". The products" + products;
+    }
 }

@@ -3,4 +3,6 @@ comment0.target=Reaction
 comment0.text=\n\ Write\ a\ description\ of\ class\ Reaction\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=e\ r\ p
 comment1.target=Reaction(double,\ Reactant[],\ Product[])
-numComments=2
+comment2.params=
+comment2.target=java.lang.String\ toString()
+numComments=3
