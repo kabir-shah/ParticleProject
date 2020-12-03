@@ -21,7 +21,7 @@ public class ParticleWorld extends World
             new Product[]{new Product(1, "Methane")}
         ),
         new Reaction(
-            -100,
+            -890700,
             new Reactant[]{new Reactant(1, Methane.class),new Reactant(1, Oxygen.class) },
             new Product[]{new Product(1, "WaterVapor"), new Product(1, "CarbonDioxide")}
         )
