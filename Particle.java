@@ -136,6 +136,7 @@ public class Particle extends Actor
                 } else {
                     // Exothermic
                     double productEnergy = -reactionEnergy / reaction.products.length;
+                    reactantEnergy /= reaction.products.length;
                     
                     for (Product product : reaction.products) {
                         for (int i = 0; i < product.coefficient; i++) {
@@ -145,13 +146,25 @@ public class Particle extends Actor
                             
                             for (Particle surrounding : surroundings) {
                                 double velocityMagnitude = Math.sqrt(2 * (productEnergy / product.coefficient / numSurroundings) / surrounding.getMass());
-                                double velocityAngle = Math.atan2(surrounding.getPositionY() - y, surrounding.getPositionX() - x);
-                                surrounding.setVelocity(velocityMagnitude * Math.cos(velocityAngle), velocityMagnitude * Math.sin(velocityAngle));
+                                
+                                if (!Double.isInfinite(velocityMagnitude)) {
+                                    double velocityAngle = Math.atan2(surrounding.getPositionY() - y, surrounding.getPositionX() - x);
+                                    
+                                    if (!Double.isNaN(velocityAngle)) {
+                                        surrounding.setVelocity(velocityMagnitude * Math.cos(velocityAngle), velocityMagnitude * Math.sin(velocityAngle));
+                                    }
+                                }
                             }
                             
-                            double velocityMagnitude = Math.sqrt(2 * reactantEnergy / productParticle.getMass());
-                            double velocityAngle = Math.random() * 2 * Math.PI;
-                            productParticle.setVelocity(velocityMagnitude * Math.cos(velocityAngle), velocityMagnitude * Math.sin(velocityAngle));
+                            double velocityMagnitude = Math.sqrt(2 * (reactantEnergy / product.coefficient) / productParticle.getMass());
+                            
+                            if (!Double.isInfinite(velocityMagnitude)) {
+                                double velocityAngle = Math.random() * 2 * Math.PI;
+                                
+                                if (!Double.isNaN(velocityAngle)) {
+                                    productParticle.setVelocity(velocityMagnitude * Math.cos(velocityAngle), velocityMagnitude * Math.sin(velocityAngle));
+                                }
+                            }
                         }
                     }
                 }
