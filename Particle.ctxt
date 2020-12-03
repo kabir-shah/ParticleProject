@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Particle
-comment0.text=\n\ The\ main\ particle\ superclass\ which\ encodes\ information\ for\ how\n\ particles\ move\ and\ interact\ with\ each\ other,\ including\ forces\ and\n\ reactions.\n\ \n\ \n
+comment0.text=\n\ The\ main\ particle\ superclass\ which\ encodes\ information\ for\ how\n\ particles\ move\ and\ interact\ with\ each\ other,\ including\ forces\ and\n\ reactions.\n\ \n\ @author\ {Kabir\ Shah}\n
 comment1.params=xInit\ yInit
 comment1.target=Particle(double,\ double)
 comment1.text=\n\ Create\ a\ particle\ given\ initial\ coordinates.\n

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Nitrogen
-comment0.text=\n\ Write\ a\ description\ of\ class\ Nitrogen\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Nitrogen\ here.\n\ \n\ This\ Nitrogen\ class\ describes\ the\ size\ and\ mass\ of\ the\ particle\ so\ other\ classes\ and\ methods\ can\ use\ it.\ It\ also\ sets\ the\ image\ of\ the\ particle.\ \n
 comment1.params=x\ y
 comment1.target=Nitrogen(double,\ double)
 numComments=2

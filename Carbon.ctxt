@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Carbon
-comment0.text=\n\ Write\ a\ description\ of\ class\ Carbon\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Carbon\ here.\n\ This\ Carbon\ class\ describes\ the\ size\ and\ mass\ of\ the\ particle\ so\ other\ classes\ and\ methods\ can\ use\ it.\ It\ also\ sets\ the\ image\ of\ the\ particle.\ \n\n
 comment1.params=x\ y
 comment1.target=Carbon(double,\ double)
 numComments=2

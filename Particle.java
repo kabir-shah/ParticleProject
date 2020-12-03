@@ -255,6 +255,10 @@ public class Particle extends Actor
                     }
                 }
                 
+                // Print out the reaction of this particle to
+                // show the user what is happening chemically.
+                System.out.println(reaction);
+                
                 // If this particle was consumed in the reaction,
                 // it won't be able to check its surroundings anymore,
                 // so stop checking for any further reactions and let

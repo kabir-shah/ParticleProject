@@ -3,5 +3,5 @@ comment0.target=Reactant
 comment0.text=\n\ Represent\ a\ reactant\ of\ a\ reaction.\n
 comment1.params=c\ p
 comment1.target=Reactant(int,\ java.lang.Class)
-comment1.text=\n\ \n
+comment1.text=\n\ Create\ a\ new\ reactant.\n
 numComments=2
