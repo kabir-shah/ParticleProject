@@ -2,9 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Methane here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * This Methane class describes the size and mass of the particle so other classes and methods can use it. It also sets the image of the particle. 
  */
 public class Methane extends Particle
 {
