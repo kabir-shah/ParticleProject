@@ -26,8 +26,14 @@ public class ParticleWorld extends World
             -100,
             new Reactant[]{new Reactant(2, Oxygen.class), new Reactant(1, Carbon.class)},
             new Product[]{new Product(1, "CarbonDioxide")}
+        ),
+        new Reaction( // CH4 + 2O2 -> CO2 + 2H2O
+            -100,
+            new Reactant[]{new Reactant(2, MolecularOxygen.class), new Reactant(1, Methane.class)},
+            new Product[]{new Product(1, "CarbonDioxide"), new Product(2, "WaterVapor")}
         )
     };
+    
     private static List<Particle> particles = new ArrayList<Particle>(); // List of all particles in world.
 
     /**
