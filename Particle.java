@@ -96,8 +96,10 @@ public class Particle extends Actor
      * Set both components of the velocity of a particle.
      */
     public void setVelocity(double v_x_new, double v_y_new) {
-        v_x = v_x_new;
-        v_y = v_y_new;
+        if (!Double.isNaN(v_x_new) && !Double.isNaN(v_y_new) && !Double.isInfinite(v_x_new) && !Double.isInfinite(v_y_new)) {
+            v_x = v_x_new;
+            v_y = v_y_new;
+        }
     }
     
     /**
@@ -107,7 +109,7 @@ public class Particle extends Actor
         // Given the acceleration of gravity, obtain the change
         // in speed by dividing the gravitational by the ticks
         // per second of the world.
-        v_y += ParticleWorld.g / ParticleWorld.speed;
+        setVelocity(v_x, v_y + ParticleWorld.g / ParticleWorld.speed);
     }
     
     /**
@@ -290,8 +292,10 @@ public class Particle extends Actor
                     2 * m * v_x / (m + c_m) + c_v_x * (c_m - m) / (m + c_m),
                     2 * m * v_y / (m + c_m) + c_v_y * (c_m - m) / (m + c_m)
                 );
-                v_x = v_x * (m - c_m) / (m + c_m) + 2 * c_m * c_v_x / (m + c_m);
-                v_y = v_y * (m - c_m) / (m + c_m) + 2 * c_m * c_v_y / (m + c_m);
+                setVelocity(
+                    v_x * (m - c_m) / (m + c_m) + 2 * c_m * c_v_x / (m + c_m),
+                    v_y * (m - c_m) / (m + c_m) + 2 * c_m * c_v_y / (m + c_m)
+                );
             }
         
             // Handle collision with walls by checking if a particle
@@ -299,11 +303,12 @@ public class Particle extends Actor
             // of itself to simulate the decaying velocity as it hits the
             // edges of the container.
             if (x <= 0 || x >= ParticleWorld.width - 1) {
-                v_x = -v_x * 0.999;
+                setVelocity(-v_x * 0.999, v_y);
+                
             }
 
             if (y <= 0 || y >= ParticleWorld.height - 1) {
-                v_y = -v_y * 0.999;
+                setVelocity(v_x, -v_y * 0.999);
             }
         }
     }

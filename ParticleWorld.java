@@ -13,17 +13,17 @@ public class ParticleWorld extends World
     public static final double g = -9.8; // Gravitational constant (m/s/s)
     public static final Reaction[] reactions = {
         new Reaction( // O + o -> O2
-            -100,
+            -1000,
             new Reactant[]{new Reactant(2, Oxygen.class)},
             new Product[]{new Product(1, "MolecularOxygen")}
         ),
         new Reaction( // O + 2H -> H2O
-            -100,
+            -1000,
             new Reactant[]{new Reactant(1, Oxygen.class), new Reactant(2, Hydrogen.class)},
             new Product[]{new Product(1, "WaterVapor")}
         ),
         new Reaction( // 2O + C -> CO2
-            -100,
+            -1000,
             new Reactant[]{new Reactant(2, Oxygen.class), new Reactant(1, Carbon.class)},
             new Product[]{new Product(1, "CarbonDioxide")}
         )
@@ -160,6 +160,12 @@ public class ParticleWorld extends World
             }
             case "Carbon": {
                 Carbon particle = new Carbon(x, y);
+                particles.add(particle);
+                addObject(particle, (int)x, (int)y);
+                return particle;
+            }
+            case "MolecularOxygen": {
+                MolecularOxygen particle = new MolecularOxygen(x, y);
                 particles.add(particle);
                 addObject(particle, (int)x, (int)y);
                 return particle;
