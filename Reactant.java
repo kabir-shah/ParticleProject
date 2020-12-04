@@ -16,6 +16,7 @@ public class Reactant extends Actor
         particle = p;
     }
     
+    // implements a toString method in order to print it out to the terminal
     public String toString() {
         return coefficient + particle.getSimpleName();
     }
