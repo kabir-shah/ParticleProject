@@ -23,6 +23,22 @@ public class Reaction extends Actor
      * Convert a reaction to a string human-readable representation.
      */
     public String toString() {
-        return "The reactants: " + reactants + ". The products" + products;
+        String output = "";
+        String sep = "";
+        
+        for (Reactant reactant : reactants) {
+            output += sep + reactant.toString();
+            sep = " + ";
+        }
+        
+        output += " -> ";
+        sep = "";
+        
+        for (Product product : products) {
+            output += sep + product.toString();
+            sep = " + ";
+        }
+        
+        return output;
     }
 }

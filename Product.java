@@ -16,6 +16,6 @@ public class Product extends Actor
         particle = p;
     }
     public String toString() {
-        return particle;
+        return coefficient + particle;
     }
 }

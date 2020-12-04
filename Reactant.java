@@ -17,6 +17,6 @@ public class Reactant extends Actor
     }
     
     public String toString() {
-        return particle.getSimpleName();
+        return coefficient + particle.getSimpleName();
     }
 }
