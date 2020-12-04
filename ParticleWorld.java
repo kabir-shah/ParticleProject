@@ -28,7 +28,7 @@ public class ParticleWorld extends World
             new Product[]{new Product(1, "CarbonDioxide")}
         ),
         new Reaction( // CH4 + 2O2 -> CO2 + 2H2O
-            -100,
+            -80000,
             new Reactant[]{new Reactant(2, MolecularOxygen.class), new Reactant(1, Methane.class)},
             new Product[]{new Product(1, "CarbonDioxide"), new Product(2, "WaterVapor")}
         )
