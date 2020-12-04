@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Reactant extends Actor
 {
     public int coefficient; // The stoichiometric coefficient of the product.
-    public String particle; // The particle class of a reactant.
+    public Class particle; // The particle class of a reactant.
 
     /**
      * Create a new reactant.
@@ -17,6 +17,6 @@ public class Reactant extends Actor
     }
     
     public String toString() {
-        return "particle";
+        return particle.getSimpleName();
     }
 }

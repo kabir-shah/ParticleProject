@@ -4,4 +4,6 @@ comment0.text=\n\ Represent\ a\ product\ of\ a\ reaction.\n
 comment1.params=c\ p
 comment1.target=Product(int,\ java.lang.String)
 comment1.text=\n\ Create\ a\ new\ product.\n
-numComments=2
+comment2.params=
+comment2.target=java.lang.String\ toString()
+numComments=3

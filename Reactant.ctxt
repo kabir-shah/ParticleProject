@@ -4,4 +4,6 @@ comment0.text=\n\ Represent\ a\ reactant\ of\ a\ reaction.\n
 comment1.params=c\ p
 comment1.target=Reactant(int,\ java.lang.Class)
 comment1.text=\n\ Create\ a\ new\ reactant.\n
-numComments=2
+comment2.params=
+comment2.target=java.lang.String\ toString()
+numComments=3
