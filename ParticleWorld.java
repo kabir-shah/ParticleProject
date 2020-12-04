@@ -4,18 +4,19 @@ import java.util.List;
 
 /**
  * Hold the world of particles and handle their general behavior.
+ * @everyone
  */
 public class ParticleWorld extends World
 {
-    public static final int width = 1000;
-    public static final int height = 600;
+    public static final int width = 1000; // sets the width of canvas
+    public static final int height = 600; // sets the height of canvas
     public static final int speed = 60; // Ticks per second.
     public static final double g = -9.8; // Gravitational constant (m/s/s)
-    public static final Reaction[] reactions = {
+    public static final Reaction[] reactions = { // handles all the reactions in an array list
         new Reaction( // O + o -> O2
             -1000,
-            new Reactant[]{new Reactant(2, Oxygen.class)},
-            new Product[]{new Product(1, "MolecularOxygen")}
+            new Reactant[]{new Reactant(2, Oxygen.class)}, // includes both number of particle and type of particle
+            new Product[]{new Product(1, "MolecularOxygen")} // for both reactant and product
         ),
         new Reaction( // O + 2H -> H2O
             -1000,
@@ -41,12 +42,12 @@ public class ParticleWorld extends World
      */
     public ParticleWorld()
     {
-        super(width, height, 1);
+        super(width, height, 1); // creates the canvas
         Greenfoot.setSpeed(speed); // Set the speed according to the attribute.
         
         // Create the sensors and menu items. Each particle has a certain letter attatched to it, if you press the letter and click, it will create the particle
         addObject(new Sensors(this), 500, 550);
-        addObject(new MenuItem(this, "Carbon", 60, 25, "a"), 0, 0);
+        addObject(new MenuItem(this, "Carbon", 60, 25, "a"), 0, 0); // for example, to spawn in a carbon particle, press the letter 'a' and hold your mouse
         addObject(new MenuItem(this, "CarbonDioxide", 90, 50, "b"), 0, 0);
         addObject(new MenuItem(this, "Glucose", 60, 75, "c"), 0, 0);
         addObject(new MenuItem(this, "Helium", 60, 100, "d"), 0, 0);
@@ -58,7 +59,7 @@ public class ParticleWorld extends World
         addObject(new MenuItem(this, "Phosphate", 90, 250, "j"), 0, 0);
         addObject(new MenuItem(this, "WaterVapor", 80, 275, "k"), 0, 0);
         
-        // Loop and create particles of all types.
+        // Loop and create particles of all types. based on the number, it creates specific quantaties of each particle
         for (int i = 0; i < 100; i++) {
             if (i < 18) {
                 Particle particle = new Oxygen(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
