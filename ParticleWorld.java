@@ -12,10 +12,10 @@ public class ParticleWorld extends World
     public static final int speed = 60; // Ticks per second.
     public static final double g = -9.8; // Gravitational constant (m/s/s)
     public static final Reaction[] reactions = {
-        new Reaction(
+        new Reaction( // O + o -> O2
             -100,
-            new Reactant[]{new Reactant(2, CarbonDioxide.class)},
-            new Product[]{new Product(1, "Methane")}
+            new Reactant[]{new Reactant(2, Oxygen.class)},
+            new Product[]{new Product(1, "MolecularOxygen")}
         ),
         new Reaction( // O + 2H -> H2O
             -100,
@@ -83,6 +83,11 @@ public class ParticleWorld extends World
             }
             else if (i < 95) {
                 Particle particle = new Glucose(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
+                particles.add(particle);
+                addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
+            }
+            else if (i < 97) {
+                Particle particle = new MolecularOxygen(Greenfoot.getRandomNumber(width), Greenfoot.getRandomNumber(height));
                 particles.add(particle);
                 addObject(particle, (int)particle.getPositionX(), (int)particle.getPositionY());
             }
