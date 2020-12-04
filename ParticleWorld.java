@@ -44,14 +44,19 @@ public class ParticleWorld extends World
         super(width, height, 1);
         Greenfoot.setSpeed(speed); // Set the speed according to the attribute.
         
-        // Create the sensors and menu items.
+        // Create the sensors and menu items. Each particle has a certain letter attatched to it, if you press the letter and click, it will create the particle
         addObject(new Sensors(this), 500, 550);
-        addObject(new MenuItem(this, "Carbon", 60, 25, "1"), 0, 0);
-        addObject(new MenuItem(this, "CarbonDioxide", 90, 50, "2"), 0, 0);
-        addObject(new MenuItem(this, "Glucose", 60, 75, "3"), 0, 0);
-        addObject(new MenuItem(this, "Helium", 60, 100, "4"), 0, 0);
-        addObject(new MenuItem(this, "Hydrogen", 70, 125, "5"), 0, 0);
-        addObject(new MenuItem(this, "Phosphate", 90, 100, ""), 0, 0);
+        addObject(new MenuItem(this, "Carbon", 60, 25, "a"), 0, 0);
+        addObject(new MenuItem(this, "CarbonDioxide", 90, 50, "b"), 0, 0);
+        addObject(new MenuItem(this, "Glucose", 60, 75, "c"), 0, 0);
+        addObject(new MenuItem(this, "Helium", 60, 100, "d"), 0, 0);
+        addObject(new MenuItem(this, "Hydrogen", 70, 125, "e"), 0, 0);
+        addObject(new MenuItem(this, "Methane", 60, 150, "f"), 0, 0);
+        addObject(new MenuItem(this, "MolecularOxygen", 100, 175, "g"), 0, 0);
+        addObject(new MenuItem(this, "Nitrogen", 70, 200, "h"), 0, 0);
+        addObject(new MenuItem(this, "Oxygen", 60, 225, "i"), 0, 0);
+        addObject(new MenuItem(this, "Phosphate", 90, 250, "j"), 0, 0);
+        addObject(new MenuItem(this, "WaterVapor", 80, 275, "k"), 0, 0);
         
         // Loop and create particles of all types.
         for (int i = 0; i < 100; i++) {
