@@ -46,9 +46,12 @@ public class ParticleWorld extends World
         
         // Create the sensors and menu items.
         addObject(new Sensors(this), 500, 550);
-        addObject(new MenuItem(this, "CarbonDioxide", 90, 25, "1"), 0, 0);
-        addObject(new MenuItem(this, "Glucose", 60, 50, "2"), 0, 0);
-        addObject(new MenuItem(this, "Phosphate", 71, 100, "4"), 0, 0);
+        addObject(new MenuItem(this, "Carbon", 60, 25, "1"), 0, 0);
+        addObject(new MenuItem(this, "CarbonDioxide", 90, 50, "2"), 0, 0);
+        addObject(new MenuItem(this, "Glucose", 60, 75, "3"), 0, 0);
+        addObject(new MenuItem(this, "Helium", 60, 100, "4"), 0, 0);
+        addObject(new MenuItem(this, "Hydrogen", 70, 125, "5"), 0, 0);
+        addObject(new MenuItem(this, "Phosphate", 90, 100, ""), 0, 0);
         
         // Loop and create particles of all types.
         for (int i = 0; i < 100; i++) {
